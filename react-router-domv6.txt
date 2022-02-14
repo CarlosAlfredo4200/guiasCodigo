@@ -20,6 +20,15 @@ function App() {
       />} /> 
      <Route exact path="/nueva-cuenta" element={<NuevaCuenta />} /> 
      <Route exact path="/proyectos" element={<Proyectos />} /> 
+
+     <Route exact path="/proyectos" element={
+         <div className="" >
+           <Proyectos
+                  className=""
+                  Props={}
+            />
+         </div>
+         } /> 
    </Routes>
 
     </BrowserRouter>
