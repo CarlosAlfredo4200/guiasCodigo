@@ -9,16 +9,33 @@ en react se puede desde fetch, axios , otras CORS
 
 Ejemplo:
 
+const Formulario = () => {
 
-useEffect(() => {
+  const [criptos, setCriptos] = useState([])
+
+
+  useEffect(() => {
     
     const consultarApi = async () => {
         const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD'
           //  nos devuelve un JSON
         const respuesta = await fetch( url)
         const resultado = await respuesta.json()
+       // console.log(resultado.Data);
+
+
+       //Construir array apartir de un API
+      const  arrayCripto = resultado.Data.map( cripto => {
+        const objetoAPI = {
+          id:cripto.CoinInfo.Name,
+          nombre:cripto.CoinInfo.FullName
+        }
+        return objetoAPI
         
-        console.log(resultado.Data);
+      } )
+
+      setCriptos(arrayCripto) //Llenar el array
+    //  console.log(arrayCripto);
     }
     consultarApi()
   }, []) //Consultar al inicio una sola vez
