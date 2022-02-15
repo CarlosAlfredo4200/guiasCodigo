@@ -1,0 +1,25 @@
+API. Funciones o metodos que ofrece una libreria. Con recursos a disposicion 
+recursos que estar alojados en otro servidor o una base de datos.
+
+Puede eser creada en cualquier lenguaje o framework. JSON la mejor opción.
+
+en react se puede desde fetch, axios , otras CORS
+------------------------------
+
+
+Ejemplo:
+
+
+useEffect(() => {
+    
+    const consultarApi = async () => {
+        const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD'
+          //  nos devuelve un JSON
+        const respuesta = await fetch( url)
+        const resultado = await respuesta.json()
+        
+        console.log(resultado.Data);
+    }
+    consultarApi()
+  }, []) //Consultar al inicio una sola vez
+  
