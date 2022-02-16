@@ -32,7 +32,56 @@ function App() {
    </Routes>
 
     </BrowserRouter>
+
+-----------------------------------------------------------------
+---------Tambien podemos hacer uso de Outlet-----------
+
+ 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import IniciarSesion from "./components/layout/IniciarSesion";
+import Layout from "./components/layout/Layout";
+import Inicio from "./components/Paginas/Inicio";
+
+import LoginForm from "./components/Paginas/LoginForm";
+import NuevoCliente from "./components/Paginas/NuevoCliente";
+import Editar from "./components/Paginas/Editar";
+ 
+<>
+      <BrowserRouter>
+        <Routes>
+
+
+            <Route path="/" element={<IniciarSesion />}> 
+                <Route index element={<LoginForm />} /> 
+            </Route>
+      
+            <Route path="/clientes" element={<Layout />}>
+                  <Route index element={<Inicio />} /> 
+                  <Route path="nuevo" element={<NuevoCliente />} /> 
+                 <Route path="editar" element={<Editar />} /> 
+            </Route>
+
+
+        </Routes>
+      </BrowserRouter>
+    </>
+
   );
 }
 
 export default App;
+
+-------------------- Componente Principal con Outlet-----
+import React from "react";
+import { Outlet } from "react-router-dom";
+
+const Layout = () => {
+  return (
+    <>
+      <div className="bg-blue-300 py-3">Desde Layout</div>
+      <Outlet />
+    </>
+  );
+};
+
+export default Layout;
